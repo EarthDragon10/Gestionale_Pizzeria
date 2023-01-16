@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Gestionale_Pizzeria.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrezzoVendita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempoDiPreparazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ingredienti)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrezzoVendita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TempoDiPreparazione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ingredienti)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProdotto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProdotto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProdotto })
+        </td>
+    </tr>
+}
+
+</table>
