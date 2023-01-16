@@ -134,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Amministratori.cs" />
+    <Compile Include="Models\CustomRole.cs" />
     <Compile Include="Models\ModelDbContext.cs" />
     <Compile Include="Models\Ordini.cs" />
     <Compile Include="Models\Prodotti.cs" />
@@ -233,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
