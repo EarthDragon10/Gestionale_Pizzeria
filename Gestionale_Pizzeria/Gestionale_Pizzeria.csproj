@@ -134,11 +134,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomRole.cs" />
-    <Compile Include="Models\ModelDbContext.cs" />
-    <Compile Include="Models\Ordini.cs" />
-    <Compile Include="Models\Prodotti.cs" />
-    <Compile Include="Models\Ruoli.cs" />
-    <Compile Include="Models\Utenti.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
