@@ -17,7 +17,7 @@ namespace Gestionale_Pizzeria.Controllers
         // GET: Utenti
         public ActionResult Index()
         {
-            var utenti = db.Utenti.Include(u => u.Ruoli);
+            var utenti = db.Utenti.Include(u => u.Ordini).Include(u => u.Ruoli);
             return View(utenti.ToList());
         }
 
@@ -39,7 +39,8 @@ namespace Gestionale_Pizzeria.Controllers
         // GET: Utenti/Create
         public ActionResult Create()
         {
-            ViewBag.IdRuoli = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli");
+            ViewBag.IdUtente = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine");
+            ViewBag.IdRuolo = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdUtente,Username,Pwd,Nome,Cognome,IdRuoli")] Utenti utenti)
+        public ActionResult Create([Bind(Include = "IdUtente,Username,Pwd,Nome,Cognome,IdRuolo")] Utenti utenti)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +58,8 @@ namespace Gestionale_Pizzeria.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdRuoli = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuoli);
+            ViewBag.IdUtente = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", utenti.IdUtente);
+            ViewBag.IdRuolo = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuolo);
             return View(utenti);
         }
 
@@ -73,7 +75,8 @@ namespace Gestionale_Pizzeria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdRuoli = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuoli);
+            ViewBag.IdUtente = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", utenti.IdUtente);
+            ViewBag.IdRuolo = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuolo);
             return View(utenti);
         }
 
@@ -82,7 +85,7 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdUtente,Username,Pwd,Nome,Cognome,IdRuoli")] Utenti utenti)
+        public ActionResult Edit([Bind(Include = "IdUtente,Username,Pwd,Nome,Cognome,IdRuolo")] Utenti utenti)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +93,8 @@ namespace Gestionale_Pizzeria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdRuoli = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuoli);
+            ViewBag.IdUtente = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", utenti.IdUtente);
+            ViewBag.IdRuolo = new SelectList(db.Ruoli, "IdRuoli", "TipoRuoli", utenti.IdRuolo);
             return View(utenti);
         }
 

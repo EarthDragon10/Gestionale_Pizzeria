@@ -10,116 +10,116 @@ using Gestionale_Pizzeria.Models;
 
 namespace Gestionale_Pizzeria.Controllers
 {
-    public class OrdiniController : Controller
+    public class DettagliOrdineController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
 
-        // GET: Ordini
+        // GET: DettagliOrdine
         public ActionResult Index()
         {
-            var ordini = db.Ordini.Include(o => o.DettagliOrdine).Include(o => o.Utenti);
-            return View(ordini.ToList());
+            var dettagliOrdine = db.DettagliOrdine.Include(d => d.Ordini).Include(d => d.Prodotti);
+            return View(dettagliOrdine.ToList());
         }
 
-        // GET: Ordini/Details/5
+        // GET: DettagliOrdine/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ordini ordini = db.Ordini.Find(id);
-            if (ordini == null)
+            DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
+            if (dettagliOrdine == null)
             {
                 return HttpNotFound();
             }
-            return View(ordini);
+            return View(dettagliOrdine);
         }
 
-        // GET: Ordini/Create
+        // GET: DettagliOrdine/Create
         public ActionResult Create()
         {
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota");
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username");
+            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine");
+            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome");
             return View();
         }
 
-        // POST: Ordini/Create
+        // POST: DettagliOrdine/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrdine,DataOrdine,Importo,StatoOrdine,Confermato,Evaso,IdDettaglioOrdine,IdUtente")] Ordini ordini)
+        public ActionResult Create([Bind(Include = "IdDettaglioOrdine,quantita,nota,IdProdotto,IdOrdine")] DettagliOrdine dettagliOrdine)
         {
             if (ModelState.IsValid)
             {
-                db.Ordini.Add(ordini);
+                db.DettagliOrdine.Add(dettagliOrdine);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota", ordini.IdOrdine);
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdOrdine);
-            return View(ordini);
+            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
+            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
+            return View(dettagliOrdine);
         }
 
-        // GET: Ordini/Edit/5
+        // GET: DettagliOrdine/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ordini ordini = db.Ordini.Find(id);
-            if (ordini == null)
+            DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
+            if (dettagliOrdine == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota", ordini.IdOrdine);
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdOrdine);
-            return View(ordini);
+            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
+            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
+            return View(dettagliOrdine);
         }
 
-        // POST: Ordini/Edit/5
+        // POST: DettagliOrdine/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdOrdine,DataOrdine,Importo,StatoOrdine,Confermato,Evaso,IdDettaglioOrdine,IdUtente")] Ordini ordini)
+        public ActionResult Edit([Bind(Include = "IdDettaglioOrdine,quantita,nota,IdProdotto,IdOrdine")] DettagliOrdine dettagliOrdine)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ordini).State = EntityState.Modified;
+                db.Entry(dettagliOrdine).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota", ordini.IdOrdine);
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdOrdine);
-            return View(ordini);
+            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
+            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
+            return View(dettagliOrdine);
         }
 
-        // GET: Ordini/Delete/5
+        // GET: DettagliOrdine/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ordini ordini = db.Ordini.Find(id);
-            if (ordini == null)
+            DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
+            if (dettagliOrdine == null)
             {
                 return HttpNotFound();
             }
-            return View(ordini);
+            return View(dettagliOrdine);
         }
 
-        // POST: Ordini/Delete/5
+        // POST: DettagliOrdine/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Ordini ordini = db.Ordini.Find(id);
-            db.Ordini.Remove(ordini);
+            DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
+            db.DettagliOrdine.Remove(dettagliOrdine);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

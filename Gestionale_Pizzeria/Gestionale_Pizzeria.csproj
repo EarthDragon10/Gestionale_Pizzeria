@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DettagliOrdineController.cs" />
     <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\RuoliController.cs" />
@@ -134,6 +135,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomRole.cs" />
+    <Compile Include="Models\DettagliOrdine.cs" />
+    <Compile Include="Models\ModelDbContext.cs" />
+    <Compile Include="Models\Ordini.cs" />
+    <Compile Include="Models\Prodotti.cs" />
+    <Compile Include="Models\Ruoli.cs" />
+    <Compile Include="Models\Utenti.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,26 +213,31 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Prodotti\Create.cshtml" />
-    <Content Include="Views\Prodotti\Delete.cshtml" />
-    <Content Include="Views\Prodotti\Details.cshtml" />
-    <Content Include="Views\Prodotti\Edit.cshtml" />
-    <Content Include="Views\Prodotti\Index.cshtml" />
-    <Content Include="Views\Ordini\Create.cshtml" />
-    <Content Include="Views\Ordini\Delete.cshtml" />
-    <Content Include="Views\Ordini\Details.cshtml" />
-    <Content Include="Views\Ordini\Edit.cshtml" />
-    <Content Include="Views\Ordini\Index.cshtml" />
-    <Content Include="Views\Utenti\Create.cshtml" />
-    <Content Include="Views\Utenti\Delete.cshtml" />
-    <Content Include="Views\Utenti\Details.cshtml" />
-    <Content Include="Views\Utenti\Edit.cshtml" />
-    <Content Include="Views\Utenti\Index.cshtml" />
     <Content Include="Views\Ruoli\Create.cshtml" />
     <Content Include="Views\Ruoli\Delete.cshtml" />
     <Content Include="Views\Ruoli\Details.cshtml" />
     <Content Include="Views\Ruoli\Edit.cshtml" />
     <Content Include="Views\Ruoli\Index.cshtml" />
+    <Content Include="Views\Utenti\Create.cshtml" />
+    <Content Include="Views\Utenti\Delete.cshtml" />
+    <Content Include="Views\Utenti\Details.cshtml" />
+    <Content Include="Views\Utenti\Edit.cshtml" />
+    <Content Include="Views\Utenti\Index.cshtml" />
+    <Content Include="Views\Ordini\Create.cshtml" />
+    <Content Include="Views\Ordini\Delete.cshtml" />
+    <Content Include="Views\Ordini\Details.cshtml" />
+    <Content Include="Views\Ordini\Edit.cshtml" />
+    <Content Include="Views\Ordini\Index.cshtml" />
+    <Content Include="Views\DettagliOrdine\Create.cshtml" />
+    <Content Include="Views\DettagliOrdine\Delete.cshtml" />
+    <Content Include="Views\DettagliOrdine\Details.cshtml" />
+    <Content Include="Views\DettagliOrdine\Edit.cshtml" />
+    <Content Include="Views\DettagliOrdine\Index.cshtml" />
+    <Content Include="Views\Prodotti\Create.cshtml" />
+    <Content Include="Views\Prodotti\Delete.cshtml" />
+    <Content Include="Views\Prodotti\Details.cshtml" />
+    <Content Include="Views\Prodotti\Edit.cshtml" />
+    <Content Include="Views\Prodotti\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

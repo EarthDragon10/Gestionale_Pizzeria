@@ -12,25 +12,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Prodotti.Nome)
+            @Html.DisplayNameFor(model => model.DettagliOrdine.nota)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantita)
+            @Html.DisplayNameFor(model => model.Utenti.Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdUtente)
+            @Html.DisplayNameFor(model => model.DataOrdine)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prezzo)
+            @Html.DisplayNameFor(model => model.Importo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Indirizzo)
+            @Html.DisplayNameFor(model => model.StatoOrdine)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nota)
+            @Html.DisplayNameFor(model => model.Confermato)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Evaso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdDettaglioOrdine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUtente)
         </th>
         <th></th>
     </tr>
@@ -38,25 +44,31 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Prodotti.Nome)
+            @Html.DisplayFor(modelItem => item.DettagliOrdine.nota)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantita)
+            @Html.DisplayFor(modelItem => item.Utenti.Username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdUtente)
+            @Html.DisplayFor(modelItem => item.DataOrdine)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
+            @Html.DisplayFor(modelItem => item.Importo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Indirizzo)
+            @Html.DisplayFor(modelItem => item.StatoOrdine)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nota)
+            @Html.DisplayFor(modelItem => item.Confermato)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Evaso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdDettaglioOrdine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUtente)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdOrdine }) |

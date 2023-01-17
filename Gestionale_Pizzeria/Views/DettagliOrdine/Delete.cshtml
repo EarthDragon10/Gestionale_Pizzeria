@@ -1,4 +1,4 @@
-﻿@model Gestionale_Pizzeria.Models.Utenti
+﻿@model Gestionale_Pizzeria.Models.DettagliOrdine
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Utenti</h4>
+    <h4>DettagliOrdine</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,43 +20,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ruoli.TipoRuoli)
+            @Html.DisplayNameFor(model => model.Prodotti.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ruoli.TipoRuoli)
+            @Html.DisplayFor(model => model.Prodotti.Nome)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => model.quantita)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Username)
+            @Html.DisplayFor(model => model.quantita)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pwd)
+            @Html.DisplayNameFor(model => model.nota)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pwd)
+            @Html.DisplayFor(model => model.nota)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.IdOrdine)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cognome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cognome)
+            @Html.DisplayFor(model => model.IdOrdine)
         </dd>
 
     </dl>

@@ -1,0 +1,58 @@
+﻿@model Gestionale_Pizzeria.Models.DettagliOrdine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DettagliOrdine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ordini.StatoOrdine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ordini.StatoOrdine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prodotti.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prodotti.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdOrdine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdOrdine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDettaglioOrdine }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
