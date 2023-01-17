@@ -39,18 +39,19 @@ namespace Gestionale_Pizzeria.Models
 
         public override string[] GetRolesForUser(string username)
         {
-        //    ModelDbContext DbContext = new ModelDbContext();
+            //    ModelDbContext DbContext = new ModelDbContext();
 
-        //    List<string> roles = new List<string>();
+            //    List<string> roles = new List<string>();
 
-        //    var users = DbContext.Utenti.Where(user => user.Ruolo == "Utente").ToList();
+            //    var users = DbContext.Utenti.Where(user => user.Ruolo == "Utente").ToList();
 
-        //    foreach(Utenti item in users)
-        //    {
-        //        roles.Add(item.Ruolo.ToString());
-        //    }
-        //    return roles;
-        //}
+            //    foreach(Utenti item in users)
+            //    {
+            //        roles.Add(item.Ruolo.ToString());
+            //    }
+            //    return roles;
+            throw new NotImplementedException();
+        }
 
         public override string[] GetUsersInRole(string roleName)
         {

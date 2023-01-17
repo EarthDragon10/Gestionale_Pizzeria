@@ -10,107 +10,107 @@ using Gestionale_Pizzeria.Models;
 
 namespace Gestionale_Pizzeria.Controllers
 {
-    public class AmministratoriController : Controller
+    public class RuoliController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
 
-        // GET: Amministratori
+        // GET: Ruoli
         public ActionResult Index()
         {
-            return View(db.Amministratori.ToList());
+            return View(db.Ruoli.ToList());
         }
 
-        // GET: Amministratori/Details/5
+        // GET: Ruoli/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Amministratori amministratori = db.Amministratori.Find(id);
-            if (amministratori == null)
+            Ruoli ruoli = db.Ruoli.Find(id);
+            if (ruoli == null)
             {
                 return HttpNotFound();
             }
-            return View(amministratori);
+            return View(ruoli);
         }
 
-        // GET: Amministratori/Create
+        // GET: Ruoli/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Amministratori/Create
+        // POST: Ruoli/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdAdmin,Username,Pwd,Nome,Cognome,Ruolo")] Amministratori amministratori)
+        public ActionResult Create([Bind(Include = "IdRuoli,TipoRuoli")] Ruoli ruoli)
         {
             if (ModelState.IsValid)
             {
-                db.Amministratori.Add(amministratori);
+                db.Ruoli.Add(ruoli);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(amministratori);
+            return View(ruoli);
         }
 
-        // GET: Amministratori/Edit/5
+        // GET: Ruoli/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Amministratori amministratori = db.Amministratori.Find(id);
-            if (amministratori == null)
+            Ruoli ruoli = db.Ruoli.Find(id);
+            if (ruoli == null)
             {
                 return HttpNotFound();
             }
-            return View(amministratori);
+            return View(ruoli);
         }
 
-        // POST: Amministratori/Edit/5
+        // POST: Ruoli/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdAdmin,Username,Pwd,Nome,Cognome,Ruolo")] Amministratori amministratori)
+        public ActionResult Edit([Bind(Include = "IdRuoli,TipoRuoli")] Ruoli ruoli)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(amministratori).State = EntityState.Modified;
+                db.Entry(ruoli).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(amministratori);
+            return View(ruoli);
         }
 
-        // GET: Amministratori/Delete/5
+        // GET: Ruoli/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Amministratori amministratori = db.Amministratori.Find(id);
-            if (amministratori == null)
+            Ruoli ruoli = db.Ruoli.Find(id);
+            if (ruoli == null)
             {
                 return HttpNotFound();
             }
-            return View(amministratori);
+            return View(ruoli);
         }
 
-        // POST: Amministratori/Delete/5
+        // POST: Ruoli/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Amministratori amministratori = db.Amministratori.Find(id);
-            db.Amministratori.Remove(amministratori);
+            Ruoli ruoli = db.Ruoli.Find(id);
+            db.Ruoli.Remove(ruoli);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
