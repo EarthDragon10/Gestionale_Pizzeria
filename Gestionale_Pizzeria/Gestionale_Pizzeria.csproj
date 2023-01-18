@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DettagliOrdineController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\RuoliController.cs" />
@@ -168,6 +169,7 @@
     <Content Include="Content\Img\quattroFormaggi.jpeg" />
     <Content Include="Content\Img\quattroStagioni.jpeg" />
     <Content Include="Content\Img\salmone.jpeg" />
+    <Content Include="Content\Logo\pizza-logo.jpg" />
     <Content Include="Content\Logo\Pizza-logo.png" />
     <Content Include="Content\Logo\pizza-logo2.png" />
     <Content Include="favicon.ico" />
@@ -248,9 +250,11 @@
     <Content Include="Views\Prodotti\Details.cshtml" />
     <Content Include="Views\Prodotti\Edit.cshtml" />
     <Content Include="Views\Prodotti\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

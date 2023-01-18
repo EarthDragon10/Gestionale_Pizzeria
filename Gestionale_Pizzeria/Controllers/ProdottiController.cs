@@ -46,10 +46,15 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProdotto,Nome,UrlImg,PrezzoVendita,TempoDiPreparazione,Ingredienti")] Prodotti prodotti)
+        public ActionResult Create([Bind(Include = "IdProdotto,Nome,UrlImg,PrezzoVendita,TempoDiPreparazione,Ingredienti,FileFoto")] Prodotti prodotti)
         {
             if (ModelState.IsValid)
-            {
+            {         
+                string Path = Server.MapPath("../Content/FileUpload/" + prodotti.FileFoto.FileName);
+                prodotti.FileFoto.SaveAs(Path);
+
+                prodotti.UrlImg = prodotti.FileFoto.FileName;
+
                 db.Prodotti.Add(prodotti);
                 db.SaveChanges();
                 return RedirectToAction("Index");

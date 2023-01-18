@@ -6,46 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     <script src="https://kit.fontawesome.com/7b501ddc7c.js" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="header container-fluid d-flex justify-content-between align-items-center p-5">
         <div>
-            <img src="~/Content/Logo/Pizza-logo.png" alt="Alternate Text" />
+            <img src="~/Content/Logo/pizza-logo.jpg" class="logo-img" alt="Alternate Text" />
         </div>
         <div>
-            @Html.ActionLink("Home", "Index", "Home")
-            @Html.ActionLink("Account", "Auth", "Login")
-            @Html.ActionLink("Carrello", "Carrello", "Ordini")
+            <ul class="links-home d-flex gap-5">
+                <li>@Html.ActionLink("Home", "Index", "Home") <i class="fa-solid fa-house-user"></i></li>
+                <li>@Html.ActionLink("Account", "Auth", "Login") <i class="fa-solid fa-right-to-bracket"></i></li>
+            </ul>   
+        </div>
+        <div>
+            @Html.ActionLink("Carrello", "Carrello", "Ordini") <i class="fa-solid fa-cart-shopping"></i>
         </div>
         @*Abilitarlo in caso di login dell'admin*@
         @*<div></div>*@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
     </div>
     <div class="container-fluid">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-                <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
-            </div>
+        <div class="footer">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+                    <span class="mb-3 mb-md-0">© 2022 Company, Inc</span>
+                </div>
 
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><i class="fa-brands fa-linkedin"></i></li>
-                <li class="ms-3"><i class="fa-brands fa-instagram"></i></li>
-                <li class="ms-3"><i class="fa-brands fa-facebook"></i></li>
-            </ul>
-        </footer>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><i class="fa-brands fa-linkedin"></i></li>
+                    <li class="ms-3"><i class="fa-brands fa-instagram"></i></li>
+                    <li class="ms-3"><i class="fa-brands fa-facebook"></i></li>
+                </ul>
+            </footer>
+        </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

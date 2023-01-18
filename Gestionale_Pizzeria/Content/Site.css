@@ -1,12 +1,24 @@
-﻿body {
+﻿* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
     padding-top: 0px;
     padding-bottom: 0px;
+    background-color: #faf6f2;
+/*    min-width: 400px;
+    min-height: 100vh;*/
+/*    overflow-x: hidden;*/
+    margin: 0 auto;
+    font-size: 1.7rem;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 20px 0px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +33,30 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/* HEADER */
+
+.header, footer {
+    background-color: #DF2C2B;
+    padding: 6px 10px;
+    color: black;
+}
+
+.logo-img {
+    height: 110px;
+    width: auto;
+}
+
+a { 
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    font-size: 1rem;
+}
+
+.container-fluid {
+    --bs-gutter-x: 0rem !important;
 }

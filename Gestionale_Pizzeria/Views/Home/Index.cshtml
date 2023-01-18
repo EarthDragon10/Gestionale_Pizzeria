@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Gestionale_Pizzeria.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="card shadow p-2" style="width: 18rem;">
+        <img class="card-img-top rounded" src="../Content/FileUpload/@item.UrlImg" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-text">@item.Nome</h2>
+            <p class="card-text">€ @item.PrezzoVendita</p>
+            <h4 class="card-text">Ingredienti:</h4>
+            <p class="card-text">@item.Ingredienti</p>
+
+            <div class="btn btn-dark">@Html.ActionLink("Altre Info", "Details", "Prodotti", new { id = item.IdProdotto}, null )</div>
+        </div>
+    </div>
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrezzoVendita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempoDiPreparazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredienti)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrlImg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrezzoVendita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempoDiPreparazione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingredienti)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdProdotto }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdProdotto }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdProdotto })
+            </td>
+        </tr>
+    }
+
+    </table>*@
