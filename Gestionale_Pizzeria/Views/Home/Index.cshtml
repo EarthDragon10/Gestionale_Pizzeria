@@ -15,7 +15,7 @@
             <h4 class="card-text">Ingredienti:</h4>
             <p class="card-text">@item.Ingredienti</p>
 
-            <div class="btn btn-dark">@Html.ActionLink("Altre Info", "Details", "Prodotti", new { id = item.IdProdotto}, null )</div>
+            <div class="btn btn-success">@Html.ActionLink("Altre Info", "Create", "DettagliOrdine", new { id = item.IdProdotto}, null )</div>
         </div>
     </div>
 }

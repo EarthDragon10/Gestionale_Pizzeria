@@ -11,28 +11,35 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="header container-fluid d-flex justify-content-between align-items-center p-5">
+    <div class="header container-fluid d-flex justify-content-between align-items-center py-2 px-5">
         <div>
             <img src="~/Content/Logo/pizza-logo.jpg" class="logo-img" alt="Alternate Text" />
         </div>
         <div>
             <ul class="links-home d-flex gap-5">
-                <li>@Html.ActionLink("Home", "Index", "Home") <i class="fa-solid fa-house-user"></i></li>
-                <li>@Html.ActionLink("Account", "Auth", "Login") <i class="fa-solid fa-right-to-bracket"></i></li>
+                <li>@Html.ActionLink("Menu", "Index", "Home") <i class="fa-solid fa-house-user"></i></li>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="btn btn-success text-white rounded btn-login">@Html.ActionLink("Login", "Signin", "Login") <i class="fa-solid fa-right-to-bracket"></i></li>
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="btn btn-warning text-white rounded btn-login">@Html.ActionLink("Logout", "SignOut", "Login")</li>
+                }
+                <li>@Html.ActionLink("Register", "Signup", "Login") <i class="fa-solid fa-user-plus"></i></li>
             </ul>   
         </div>
         <div>
             @Html.ActionLink("Carrello", "Carrello", "Ordini") <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        @*Abilitarlo in caso di login dell'admin*@
-        @*<div></div>*@
+        </div>      
     </div>
     <div class="container body-content">
         @RenderBody()
     </div>
     <div class="container-fluid">
         <div class="footer">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center border-top">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center border-top p-4">
                 <div class="col-md-4 d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                         <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>

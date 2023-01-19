@@ -10,6 +10,7 @@ namespace Gestionale_Pizzeria.Models
 {
     public class CustomRole : RoleProvider
     {
+        private ModelDbContext DbContext = new ModelDbContext();
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -39,18 +40,10 @@ namespace Gestionale_Pizzeria.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            //    ModelDbContext DbContext = new ModelDbContext();
-
-            //    List<string> roles = new List<string>();
-
-            //    var users = DbContext.Utenti.Where(user => user.Ruolo == "Utente").ToList();
-
-            //    foreach(Utenti item in users)
-            //    {
-            //        roles.Add(item.Ruolo.ToString());
-            //    }
-            //    return roles;
-            throw new NotImplementedException();
+            string data = DbContext.Utenti.Where(utente => utente.Username == username).FirstOrDefault().Ruoli.TipoRuoli;
+            var result = new string[] { data };
+            return result;
+            //throw new NotImplementedException();
         }
 
         public override string[] GetUsersInRole(string roleName)

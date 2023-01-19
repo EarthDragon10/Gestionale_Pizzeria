@@ -25,7 +25,9 @@ namespace Gestionale_Pizzeria.Models
         //[Required]
         public string UrlImg { get; set; }
 
+        
         [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         public decimal PrezzoVendita { get; set; }
 
         public int TempoDiPreparazione { get; set; }

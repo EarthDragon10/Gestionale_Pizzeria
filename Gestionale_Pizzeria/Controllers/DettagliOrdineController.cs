@@ -21,6 +21,21 @@ namespace Gestionale_Pizzeria.Controllers
             return View(dettagliOrdine.ToList());
         }
 
+        // GET in PartialView
+        public ActionResult PartialViewSingoloProdotto(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Prodotti prodotti = db.Prodotti.Find(id);
+            if (prodotti == null)
+            {
+                return HttpNotFound();
+            }
+            return View(prodotti);
+        }
+
         // GET: DettagliOrdine/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,18 +64,19 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDettaglioOrdine,quantita,nota,IdProdotto,IdOrdine")] DettagliOrdine dettagliOrdine)
+        public ActionResult Create([Bind(Include ="quantita,nota,IdProdotto")] DettagliOrdine dettagliOrdine)
         {
-            if (ModelState.IsValid)
-            {
-                db.DettagliOrdine.Add(dettagliOrdine);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            TempData["dettagliOrdine"] = dettagliOrdine;
+            //if (ModelState.IsValid)
+            //{
+            //    db.DettagliOrdine.Add(dettagliOrdine);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
             ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
-            return View(dettagliOrdine);
+            return RedirectToAction("Create", "Ordini");
         }
 
         // GET: DettagliOrdine/Edit/5

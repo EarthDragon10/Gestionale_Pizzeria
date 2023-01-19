@@ -4,55 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container d-flex gap-5">
+    <div class="col">
+        <img class="card-img-top rounded" src="~/Content/FileUpload/@Model.UrlImg" alt="Card image cap">
+    </div>
+    <div class="col">
+        <h2>@Model.Nome</h2>
 
-<div>
-    <h4>Prodotti</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+        <h3>Prezzo vendita:</h3>
+        <p>@Model.PrezzoVendita</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+        <h3>Tempo di preparazione:</h3>
+        <p>@Model.TempoDiPreparazione min</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UrlImg)
-        </dt>
+        <h3>Ingridienti:</h3>
+        <p>@Model.Ingredienti</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.UrlImg)
-        </dd>
+        @*Creare dal controller un create DettaglioOrdine come partial view*@
+        @{
+            @Html.HiddenFor(model => model.IdProdotto)
+            Html.RenderAction("PartialViewEdit", "DettagliOrdine");
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrezzoVendita)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PrezzoVendita)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TempoDiPreparazione)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TempoDiPreparazione)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ingredienti)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ingredienti)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProdotto }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

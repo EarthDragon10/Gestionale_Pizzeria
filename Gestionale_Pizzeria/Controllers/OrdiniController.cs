@@ -39,6 +39,7 @@ namespace Gestionale_Pizzeria.Controllers
         // GET: Ordini/Create
         public ActionResult Create()
         {
+            var data = TempData["dettagliOrdine"];
             ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota");
             ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username");
             return View();
@@ -53,7 +54,13 @@ namespace Gestionale_Pizzeria.Controllers
         {
             if (ModelState.IsValid)
             {
+                DettagliOrdine data = TempData["dettagliOrdine"] as DettagliOrdine;
                 db.Ordini.Add(ordini);
+                db.SaveChanges();
+                DettagliOrdine dettagli = new DettagliOrdine();
+                dettagli.IdOrdine = ordini.IdOrdine;
+                dettagli.nota = data.nota;
+                dettagli.quantita = data.quantita;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

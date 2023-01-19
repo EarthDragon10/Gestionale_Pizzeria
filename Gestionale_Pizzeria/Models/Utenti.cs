@@ -12,12 +12,13 @@ namespace Gestionale_Pizzeria.Models
         [Key]
         public int IdUtente { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Username sbagliato!")]
+        [StringLength(20)]       
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password sbagliato!")]
         [StringLength(20)]
+        [Display(Name = "Password")]
         public string Pwd { get; set; }
 
         [Required]
@@ -26,6 +27,7 @@ namespace Gestionale_Pizzeria.Models
         [Required]
         public string Cognome { get; set; }
 
+        [Display(Name ="Ruolo")]
         public int IdRuolo { get; set; }
 
         public virtual Ordini Ordini { get; set; }
