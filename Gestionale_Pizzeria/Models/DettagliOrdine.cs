@@ -17,9 +17,9 @@ namespace Gestionale_Pizzeria.Models
         [Required]
         public string nota { get; set; }
 
-        public int IdProdotto { get; set; }
+        public int? IdProdotto { get; set; }
 
-        public int IdOrdine { get; set; }
+        public int? IdOrdine { get; set; }
 
         public virtual Prodotti Prodotti { get; set; }
 

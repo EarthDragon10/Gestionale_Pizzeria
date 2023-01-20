@@ -18,6 +18,7 @@ namespace Gestionale_Pizzeria.Controllers
         public ActionResult Index()
         {
             var ordini = db.Ordini.Include(o => o.DettagliOrdine).Include(o => o.Utenti);
+            ViewBag.StatoPreparazione = "In Preparazione";
             return View(ordini.ToList());
         }
 
@@ -39,9 +40,11 @@ namespace Gestionale_Pizzeria.Controllers
         // GET: Ordini/Create
         public ActionResult Create()
         {
-            var data = TempData["dettagliOrdine"];
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota");
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username");
+            //DettagliOrdine data = TempData["dettagliOrdine"] as DettagliOrdine;
+            //TempData["quantitá"] = data.quantita;
+
+            //ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota");
+            //ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username");
             return View();
         }
 
@@ -50,24 +53,36 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrdine,DataOrdine,Importo,StatoOrdine,Confermato,Evaso,IdDettaglioOrdine,IdUtente")] Ordini ordini)
+        public ActionResult Create([Bind(Include = "StatoOrdine")] Ordini ordini)
         {
-            if (ModelState.IsValid)
-            {
-                DettagliOrdine data = TempData["dettagliOrdine"] as DettagliOrdine;
-                db.Ordini.Add(ordini);
-                db.SaveChanges();
-                DettagliOrdine dettagli = new DettagliOrdine();
-                dettagli.IdOrdine = ordini.IdOrdine;
-                dettagli.nota = data.nota;
-                dettagli.quantita = data.quantita;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota", ordini.IdOrdine);
-            ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdOrdine);
-            return View(ordini);
+            DettagliOrdine data = TempData["dettagliOrdine"] as DettagliOrdine;
+            Utenti utente = TempData["Utente"] as Utenti;
+            ordini.DataOrdine = DateTime.Now;
+            ordini.StatoOrdine = "";
+            ordini.Evaso = false;
+            ordini.Importo = data.Prodotti.PrezzoVendita * data.quantita;
+            ordini.Confermato = "Ordine confermato";
+            ordini.IdUtente = utente.IdUtente;
+      
+            DettagliOrdine dettagli = new DettagliOrdine();
+            //dettagli.IdOrdine = ;
+            dettagli.nota = data.nota;
+            dettagli.quantita = data.quantita;
+            dettagli.Prodotti = data.Prodotti;
+            dettagli.IdProdotto = data.Prodotti.IdProdotto;
+
+            db.DettagliOrdine.Add(dettagli);
+            db.SaveChanges(); 
+            ordini.IdDettaglioOrdine = db.DettagliOrdine.Where(dOrder => dOrder.Ordini.DataOrdine.Equals(ordini.DataOrdine)).FirstOrDefault().IdDettaglioOrdine;
+            db.Ordini.Add(ordini);            
+            db.SaveChanges();
+            return RedirectToAction("Index");
+            
+
+            //ViewBag.IdOrdine = new SelectList(db.DettagliOrdine, "IdDettaglioOrdine", "nota", ordini.IdOrdine);
+            //ViewBag.IdOrdine = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdOrdine);
+            //return View(ordini);
         }
 
         // GET: Ordini/Edit/5

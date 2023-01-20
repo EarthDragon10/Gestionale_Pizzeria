@@ -5,20 +5,20 @@
     Layout = null;
 }
 
+@Html.HiddenFor(model => model.IdProdotto)
 
-    
-    <div class="col">
-        <h2>@Model.Nome</h2>
+<div class="col">
+    <h2>@Model.Nome</h2>
 
-        <h3>Prezzo:</h3>
-        <p>@Model.PrezzoVendita</p>
+    <h3>Prezzo:</h3>
+    <p>@Model.PrezzoVendita</p>
 
-        <h3>Tempo di preparazione</h3>
-        <p>@Model.TempoDiPreparazione</p>
+    <h3>Tempo di preparazione</h3>
+    <p>@Model.TempoDiPreparazione</p>
 
-        <h3>Ingredienti:</h3>
-        <p>@Model.Ingredienti</p>
-    </div>
-    <div class="col">
-        <img class="card-img-top w-50 rounded" src="~/Content/FileUpload/@Model.UrlImg" alt="Card image cap">
+    <h3>Ingredienti:</h3>
+    <p>@Model.Ingredienti</p>
+</div>
+<div class="col">
+    <img class="card-img-top w-50 rounded" src="~/Content/FileUpload/@Model.UrlImg" alt="Card image cap">
     @*</div>*@

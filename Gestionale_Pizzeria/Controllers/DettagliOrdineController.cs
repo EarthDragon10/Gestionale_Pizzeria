@@ -29,6 +29,7 @@ namespace Gestionale_Pizzeria.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Prodotti prodotti = db.Prodotti.Find(id);
+            TempData["Prodotto"] = prodotti;
             if (prodotti == null)
             {
                 return HttpNotFound();
@@ -54,8 +55,8 @@ namespace Gestionale_Pizzeria.Controllers
         // GET: DettagliOrdine/Create
         public ActionResult Create()
         {
-            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine");
-            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome");
+            //ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine");
+            //ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome");
             return View();
         }
 
@@ -64,8 +65,11 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include ="quantita,nota,IdProdotto")] DettagliOrdine dettagliOrdine)
+        public ActionResult Create([Bind(Include ="quantita,nota")] DettagliOrdine dettagliOrdine)
         {
+
+
+            dettagliOrdine.Prodotti = TempData["Prodotto"] as Prodotti;
             TempData["dettagliOrdine"] = dettagliOrdine;
             //if (ModelState.IsValid)
             //{
@@ -74,8 +78,8 @@ namespace Gestionale_Pizzeria.Controllers
             //    return RedirectToAction("Index");
             //}
 
-            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
-            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
+            //ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine", dettagliOrdine.IdDettaglioOrdine);
+            //ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
             return RedirectToAction("Create", "Ordini");
         }
 

@@ -24,8 +24,11 @@ namespace Gestionale_Pizzeria.Controllers
         
             var utente = db.Utenti.Where(date => date.Username.Equals(u.Username) && date.Pwd.Equals(u.Pwd));
 
-            if(utente != null)
-            {          
+
+            if(utente.ToList().Count() > 0)
+            {
+                var data = db.Utenti.Where(user => user.Username == u.Username);
+                TempData["Utente"] = data;
                 FormsAuthentication.SetAuthCookie(u.Username, false);
                 return Redirect(FormsAuthentication.DefaultUrl);
             } else

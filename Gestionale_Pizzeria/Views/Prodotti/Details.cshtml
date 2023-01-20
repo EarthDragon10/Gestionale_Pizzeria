@@ -4,6 +4,11 @@
     ViewBag.Title = "Details";
 }
 
+@Html.HiddenFor(model => model.IdProdotto)
+@Html.HiddenFor(model => model.Ingredienti)
+@Html.HiddenFor(model => model.PrezzoVendita)
+@Html.HiddenFor(model => model.TempoDiPreparazione)
+
 <div class="container d-flex gap-5">
     <div class="col">
         <img class="card-img-top rounded" src="~/Content/FileUpload/@Model.UrlImg" alt="Card image cap">
@@ -22,7 +27,7 @@
 
         @*Creare dal controller un create DettaglioOrdine come partial view*@
         @{
-            @Html.HiddenFor(model => model.IdProdotto)
+
             Html.RenderAction("PartialViewEdit", "DettagliOrdine");
         }
 

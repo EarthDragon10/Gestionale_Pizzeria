@@ -18,11 +18,11 @@ namespace Gestionale_Pizzeria.Models
         [Column(TypeName = "money")]
         public decimal Importo { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(20)]
         public string StatoOrdine { get; set; }
 
-        [Required]
+        //[Required]
         public string Confermato { get; set; }
 
         public bool Evaso { get; set; }
@@ -34,5 +34,7 @@ namespace Gestionale_Pizzeria.Models
         public virtual DettagliOrdine DettagliOrdine { get; set; }
 
         public virtual Utenti Utenti { get; set; }
+        [NotMapped()]
+        public virtual Prodotti Prodotti { get; set; }
     }
 }

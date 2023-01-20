@@ -37,7 +37,7 @@ namespace Gestionale_Pizzeria.Controllers
         }
 
         // GET: Prodotti/Create
-        [Authorize(Roles ="Admin")]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
