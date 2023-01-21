@@ -60,6 +60,13 @@ namespace Gestionale_Pizzeria.Controllers
             return View();
         }
 
+        public ActionResult CreateDettagliOrdine()
+        {
+            ViewBag.IdDettaglioOrdine = new SelectList(db.Ordini, "IdOrdine", "StatoOrdine");
+            ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome");
+            return View();
+        }
+
         // POST: DettagliOrdine/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.

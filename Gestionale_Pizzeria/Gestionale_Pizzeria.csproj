@@ -254,6 +254,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
     <Content Include="Views\DettagliOrdine\PartialViewSingoloProdotto.cshtml" />
+    <Content Include="Views\DettagliOrdine\CreateDettagliOrdine.cshtml" />
+    <Content Include="Views\Ordini\CreateNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
